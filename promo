@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+const fs = require('fs')
+const pkg = require('./lerna.json')
+const logo = fs.readFileSync('./logo.txt', 'utf8')
+
+console.log(logo)
+console.log('Version: ', pkg.version, '🧠\n')

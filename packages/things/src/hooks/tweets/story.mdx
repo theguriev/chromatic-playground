@@ -1,0 +1,65 @@
+import { useState, useCallback } from 'react'
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
+import { useTweetsThing } from '.'
+
+export const argTypes = {
+    limit: {
+        defaultValue: 10,
+        control: {
+            type: 'number'
+        }
+    },
+    page: {
+        defaultValue: 1,
+        control: {
+            type: 'number'
+        }
+    },
+}
+
+<Meta title="Things/Tweets" argTypes={argTypes} />
+
+# useTweetsThing
+
+<Canvas>
+    <Story name="Default">
+        {options => {
+            const [id, setId] = useState(1)
+            const { data, error, isLoading, isInitial, post, del, refetch } = useTweetsThing({ options })
+            const handleRefetch = () => {
+                refetch()
+            }
+            const handlePost = () => {
+                post({
+                    displayName: 'Eugen Guriev',
+                    username: 'eugenguriev',
+                    email: 'cdeverock0@uol.com.br',
+                    tweet: 'Hello world 😊',
+                    avatar: 'https://avatars.dicebear.com/api/avataaars/eugenguriev.svg'
+                })
+            }
+            const handleDelete = useCallback(() => {
+                del(id)
+            }, [id])
+            const handleInput = e => {
+                setId(e.target.value)
+            }
+            return (
+                <pre>
+                    <b>Initial:</b>{isInitial ? 'Yes' : 'No'}
+                    <br />
+                    <b>Loading:</b>{isLoading ? 'Yes' : 'No'}
+                    <br />
+                    <b>Refetch:</b>
+                    <button onClick={handleRefetch}>Refetch</button>
+                    <br />
+                    <button onClick={handlePost}>Post</button>
+                    <br />
+                    <input onInput={handleInput} value={id} placeholder="Delete id" />
+                    <button onClick={handleDelete}>Delete</button>
+                    <div>{data && JSON.stringify(data, null, 4)}</div>
+                </pre>
+            )
+        }}
+    </Story>
+</Canvas>

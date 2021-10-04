@@ -1,0 +1,20 @@
+{
+    "name": "@react-twitter/server",
+    "version": "0.0.0",
+    "description": "JUST FOR DEMO, NO NEED TO KEEP THE BE SERVER HERE!!!!",
+    "keywords": [
+        "server"
+    ],
+    "main": "dist/index.js",
+    "scripts": {
+        "start": "json-server --watch db.json"
+    },
+    "author": "Eugen Guriev",
+    "license": "MIT",
+    "publishConfig": {
+        "access": "public"
+    },
+    "dependencies": {
+        "json-server": "^0.16.3"
+    }
+}

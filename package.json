@@ -1,0 +1,44 @@
+{
+    "name": "react-twitter",
+    "private": true,
+    "keywords": [
+        "react"
+    ],
+    "workspaces": [
+        "packages/*"
+    ],
+    "author": "Eugen Guriev <eguriev@maystreet.com>",
+    "license": "MIT",
+    "scripts": {
+        "start:server": "node promo && lerna run --scope @react-twitter/server start",
+        "start:things": "node promo && lerna run --scope @react-twitter/things start",
+        "start:ui": "node promo && lerna run --scope @react-twitter/ui start",
+        "test": "node promo && lerna run test --parallel",
+        "test:watch": "lerna run test --parallel -- --collect-coverage=false --watch",
+        "release": "node promo && lerna version --conventional-commits --yes",
+        "bootstrap": "node promo && lerna bootstrap",
+        "build": "node promo && lerna run build",
+        "watch": "node promo && lerna run watch --parallel",
+        "storybook": "node promo && lerna run storybook --parallel",
+        "lint": "node promo && lerna run lint --parallel",
+        "publish:npm": "node promo && lerna publish from-git --yes"
+    },
+    "devDependencies": {
+        "babel-plugin-react-scoped-css": "^1.1.1",
+        "eslint": "^7.32.0",
+        "eslint-config-airbnb": "^18.2.1",
+        "eslint-plugin-import": "^2.24.2",
+        "eslint-plugin-jest": "^24.4.2",
+        "eslint-plugin-jsx-a11y": "^6.4.1",
+        "eslint-plugin-react": "^7.25.2",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "lerna": "^4.0.0",
+        "lodash-es": "^4.17.21",
+        "prop-types": "^15.7.2",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-redux": "^7.2.5",
+        "react-use": "^17.3.1",
+        "redux": "^4.1.1"
+    }
+}

@@ -1,0 +1,52 @@
+import { useState, useCallback } from 'react'
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import { Tweet } from '.'
+
+export const argTypes = {
+    displayName: {
+        defaultValue: 'Carline Redhouse',
+        control: {
+            type: 'text'
+        }
+    },
+    username: {
+        defaultValue: 'credhouse8',
+        control: {
+            type: 'text'
+        }
+    },
+    email: {
+        defaultValue: 'credhouse8@tinyurl.com',
+        control: {
+            type: 'text'
+        }
+    },
+    tweet: {
+        defaultValue: 'Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa.',
+        control: {
+            type: 'text'
+        }
+    },
+    avatar: {
+        defaultValue: 'https://avatars.dicebear.com/api/avataaars/credhouse8.svg',
+        control: {
+            type: 'text'
+        }
+    },
+    isLoading: {
+        defaultValue: false,
+        control: {
+            type: 'boolean'
+        }
+    }
+}
+
+<Meta title="Components/Tweet" component={Tweet} argTypes={argTypes} />
+
+<Canvas>
+    <Story name="Default">
+        {
+            options => <Tweet {...options} />
+        }
+    </Story>
+</Canvas>
