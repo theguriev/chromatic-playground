@@ -1,6 +1,6 @@
 {
     "name": "@react-twitter/dumb",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "A bunch of dumb function to simplify working with data",
     "keywords": [
         "dumb",
