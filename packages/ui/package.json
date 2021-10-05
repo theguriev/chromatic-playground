@@ -12,9 +12,11 @@
         "build": "node build.js",
         "start": "start-storybook -p 6006 --no-manager-cache",
         "watch": "watch 'npm run build' src",
+        "build-storybook": "build-storybook -o ./storybook-static",
         "lint": "npx eslint --fix --ignore-path ../../.gitignore .",
         "test": "jest",
-        "test:watch": "jest --watchAll"
+        "test:watch": "jest --watchAll",
+        "chromatic": "npx chromatic --project-token=2ec4e960f8ad"
     },
     "author": "Eugen Guriev",
     "license": "MIT",
