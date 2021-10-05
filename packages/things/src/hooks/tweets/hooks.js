@@ -1,8 +1,10 @@
-import { useContext } from 'react'
-import { useThing, useMutation, ThingContext } from '@redux-things/core'
+import { useThing, useMutation } from '@redux-things/core'
+import { objectHash } from '@redux-things/dumb'
+import { omit } from 'lodash-es'
 import { fetchFn, postFn, deleteFn } from './services'
 import { fulfilled, deleteFulfilled } from './reducers'
 import { selector } from './selectors'
+import { initialData } from './data'
 
 const KEY = 'TTweets'
 
@@ -23,8 +25,6 @@ export const useTweetDelete = () => useMutation(
 export const useTweetsThing = (props = {}) => {
     const { mutate: post } = useTweetPost()
     const { mutate: del } = useTweetDelete()
-    const ctx = useContext(ThingContext)
-    console.log('ctx', ctx)
     return {
         post,
         del,
@@ -42,8 +42,12 @@ export const useTweetsThing = (props = {}) => {
                     }
                 },
                 selector,
+                objectToHashFn: object => objectHash(omit(object, ['isRefetch'])),
                 ...props
             }
         )
     }
 }
+
+useTweetsThing.KEY = KEY
+useTweetsThing.initialData = initialData

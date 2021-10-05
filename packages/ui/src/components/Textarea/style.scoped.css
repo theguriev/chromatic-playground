@@ -1,0 +1,20 @@
+textarea {
+    border: 1px solid;
+    border-color: var(--text-color-placeholder);
+    padding: 4px 12px;
+    border-radius: var(--border-radius-base);
+    transition: border-color .3s;
+}
+
+textarea::-webkit-input-placeholder {
+    color: var(--text-color-placeholder);
+}
+
+textarea:hover {
+    border-color: var(--color-primary);
+}
+
+textarea:focus {
+    box-shadow: 0 0 0 2px var(--color-primary-dark-0);
+    border-color: var(--color-primary);
+}

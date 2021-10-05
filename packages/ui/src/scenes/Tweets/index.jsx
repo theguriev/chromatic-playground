@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { applyHook } from '@react-twitter/dumb'
 import { useTweetsThing } from '@react-twitter/things'
-import { useThingContext } from '@redux-things/core'
 
 import './style.scoped.css'
 import { Tweet } from '@/components'
@@ -12,26 +11,24 @@ export const useTweets = () => {
         data, post, del, refetch
     } = useTweetsThing({
         options: {
-            limit: 10, page: 1
-        }
+            limit: 10,
+            page: 1
+        },
+        initialData: useTweetsThing.initialData
     })
     return {
-        tweets: []
+        tweets: data,
+        post,
+        del,
+        refetch
     }
 }
 
 export const TweetsRepresentation = ({
     tweets
-}) => {
-    console.log('tweets', useTweetsThing({
-        options: {
-            limit: 10, page: 1
-        }
-    }))
-    return (
-        <div>Hello</div>
-    )
-}
+}) => tweets.map(
+    tweet => <Tweet key={tweet.username + tweet.id} {...tweet} />
+)
 
 TweetsRepresentation.defaultProps = {
     tweets: []
@@ -47,4 +44,4 @@ TweetsRepresentation.propTypes = {
     }))
 }
 
-export const Tweets = TweetsRepresentation
+export const Tweets = applyHook(TweetsRepresentation, useTweets)

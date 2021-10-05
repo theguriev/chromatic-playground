@@ -20,8 +20,8 @@ module.exports = (dir) => ({
             use: ['@svgr/webpack', 'url-loader']
         })
         config.resolve.alias['@'] = path.join(dir, '../src/')
-        config.resolve.alias['react-redux'] = require.resolve('react-redux')
-        // config.resolve.alias['react'] = require.resolve('react')
+        config.resolve.symlinks = false
+        config.resolve.modules = [path.resolve('../../node_modules'), 'node_modules']
         return config
     }
 })

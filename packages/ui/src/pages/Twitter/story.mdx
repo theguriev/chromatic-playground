@@ -1,0 +1,12 @@
+import { useState, useCallback } from 'react'
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import { useTweetsThing } from '@react-twitter/things'
+import { Twitter } from '.'
+
+<Meta title="Page/Twitter" component={Twitter} />
+
+<Canvas>
+    <Story name="Default">
+        <Twitter />
+    </Story>
+</Canvas>

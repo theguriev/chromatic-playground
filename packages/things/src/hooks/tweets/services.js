@@ -1,7 +1,9 @@
 export const fetchFn = ({ extra, options }) => {
     const searchQuery = new URLSearchParams({
         _limit: options?.limit || 10,
-        _page: options?.page || 1
+        _page: options?.page || 1,
+        _sort: 'id',
+        _order: 'desc'
     })
     return extra.apiClient(`tweets?${searchQuery}`)
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import { addDecorator } from '@storybook/react'
+import { addDecorator, addParameters } from '@storybook/react'
 import { ThingContext, MutationContext, setupAsyncReducers } from '@redux-things/core'
 import '@/assets/css/global.css'
 import '@/assets/css/reset.css'
@@ -39,3 +39,11 @@ const StoreDecorator = (StoryFn) => (
 )
 
 addDecorator(StoreDecorator)
+
+addParameters({
+    previewTabs: {
+        docs: {
+            hidden: false
+        },
+    },
+})
